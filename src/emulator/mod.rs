@@ -1,8 +1,8 @@
 //! Created by Zachary Lebak
-//! 
+//!
 //! --- ADD A DESCRIPTION OF THE FILE LATER
-//! 
-//! 
+//!
+//!
 
 #![allow(dead_code)] // REMOVE THIS WHEN CPU USES EVERYTHING
 
@@ -16,7 +16,6 @@ pub mod savestate;
 use crate::rng::{RandomSource, SystemRNG};
 use quirks::Quirks;
 
-
 /// The width of the screen
 pub const WIDTH: usize = 64;
 
@@ -28,7 +27,6 @@ pub const MEMORY_SIZE: usize = 4096;
 
 /// The start of a program, by convention
 pub const PROGRAM_START: usize = 0x200;
-
 
 // Ferris8
 /// Contains all of the CPU and other fields needed to run the emulator
@@ -46,7 +44,6 @@ pub struct Ferris8 {
     rng: Box<dyn RandomSource>,
 }
 
-
 // Impl Ferris8
 /// implements functions needed to access Ferris8 fields
 impl Ferris8 {
@@ -55,7 +52,6 @@ impl Ferris8 {
     pub fn new() -> Self {
         Self::with_parts(Quirks::default(), Box::new(SystemRNG))
     }
-
 
     // With Parts
     /// Creates a new Ferris8 instance using a sepcific Quirk Profile and RandomSource
@@ -81,13 +77,15 @@ impl Ferris8 {
         }
     }
 
-
     // Load Rom
     /// Copies a ROM into memory, if the ROM exists
     pub fn load_rom(&mut self, data: &[u8]) -> Result<(), String> {
         // check if ROM can fit in memory
         if data.len() > MEMORY_SIZE - PROGRAM_START {
-            return Err(format!("ROM is too big to fit in memory: {} bytes", data.len()));
+            return Err(format!(
+                "ROM is too big to fit in memory: {} bytes",
+                data.len()
+            ));
         }
 
         // copy rom into memory
@@ -95,16 +93,15 @@ impl Ferris8 {
         Ok(())
     }
 
-
     // Fetch
     /// Fetches the next opcode instruction (big-endian)
-    /// 
+    ///
     /// Only used by step()
     fn fetch(&mut self) -> u16 {
         // get both bytes
         let hi = self.memory[self.pc as usize] as u16;
         let lo = self.memory[(self.pc as usize) + 1] as u16;
-        
+
         // increment pc
         self.pc += 2;
 
@@ -112,24 +109,21 @@ impl Ferris8 {
         (hi << 8) | lo
     }
 
-
     // Step
     /// Execute the next instruction
     pub fn step(&mut self) {
         /* IMPLEMENT THIS */
     }
 
-
     // Tick Timers
     /// Ticks the delay and sound timer
-    /// 
+    ///
     /// Should be called once per frame (60hz)
     pub fn tick_timers(&mut self) {
         // sat sub avoids overflow
         self.delay_timer = self.delay_timer.saturating_sub(1);
         self.sound_timer = self.sound_timer.saturating_sub(1);
     }
-    
 
     // Get Display
     /// Returns the current display of the instance
@@ -137,13 +131,11 @@ impl Ferris8 {
         &self.display
     }
 
-
     // Set Keys
     /// Sets the keys of the instance
     pub fn set_keys(&mut self, keys: [bool; 16]) {
         self.keys = keys;
     }
-
 
     // Is Sound Active
     /// Returns true if the sound timer is > 0, false otherwise
@@ -151,27 +143,29 @@ impl Ferris8 {
         self.sound_timer > 0
     }
 
-    
     // Get PC
     /// Gets the current PC
-    /// 
+    ///
     /// Should only be used in tests to inspect the current state
-    pub fn get_pc(&self) -> u16 { self.pc }
-
+    pub fn get_pc(&self) -> u16 {
+        self.pc
+    }
 
     // Get Index
     /// Gets the current index
-    /// 
+    ///
     /// Should only be used in tests to inspect the current state
-    pub fn get_index(&self) -> u16 { self.i }
-
+    pub fn get_index(&self) -> u16 {
+        self.i
+    }
 
     // Get V
     /// Gets the current state of register 'x'
-    /// 
+    ///
     /// Should only be used in tests to inspect the current state
-    pub fn get_v(&self, x: usize) -> u8 { self.v[x] }
-
+    pub fn get_v(&self, x: usize) -> u8 {
+        self.v[x]
+    }
 
     //  TEMPORARY FN TO TEST PIXELS UNTIL DXYN WORKS
     /// TEMPORARY FN TO TEST PIXELS UNTIL DXYN WORKS
@@ -180,9 +174,7 @@ impl Ferris8 {
             *px = (idx % WIDTH + idx / WIDTH) % 2 == 0;
         }
     }
-
 }
-
 
 // Default
 /// Creates a new Ferris8 instance using the default Quirk Profile and SystemRNG

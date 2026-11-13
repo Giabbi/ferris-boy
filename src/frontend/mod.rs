@@ -1,18 +1,16 @@
 //! Created by Giancarlo Ambrosino
-//! 
+//!
 //! --- ADD A DESCRIPTION OF THE FILE LATER
-//! 
-//! 
+//!
+//!
 
 // Modules
 pub mod headless;
 pub mod screenshot;
 pub mod window;
 
-
 // Packages
 use crate::emulator::Ferris8;
-
 
 // Frontend
 ///
@@ -22,7 +20,6 @@ pub trait Frontend {
     fn poll_keys(&mut self) -> [bool; 16];
     fn beep(&mut self, on: bool);
 }
-
 
 // Run
 /// A single loop iteration (one 60hz frame)

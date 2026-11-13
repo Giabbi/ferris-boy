@@ -1,13 +1,12 @@
 //! Created by Zachary Lebak
-//! 
+//!
 //! --- ADD A DESCRIPTION OF THE FILE LATER
-//! 
-//! 
+//!
+//!
 
 // FONT START
 /// Font start by convention
 pub const FONT_START: usize = 0x50;
-
 
 // FONT
 /// Each num/char is 4 pixels wide and 5 pixels high

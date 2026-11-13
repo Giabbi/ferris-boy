@@ -1,8 +1,8 @@
 //! Created by Zachary Lebak
-//! 
+//!
 //! --- ADD A DESCRIPTION OF THE FILE LATER
-//! 
-//! 
+//!
+//!
 
 // Quirk Profile
 /// the different chip8 interpreters
@@ -12,7 +12,6 @@ pub enum QuirkProfile {
     Chip48,
     SuperChip,
 }
-
 
 // Quirks
 /// possible quirks each profile can have
@@ -24,7 +23,6 @@ pub struct Quirks {
     pub sprite_wrap: bool,
 }
 
-
 // Default
 /// default quirk profile is Vip
 impl Default for Quirks {
@@ -32,7 +30,6 @@ impl Default for Quirks {
         Quirks::from_profile(QuirkProfile::Vip)
     }
 }
-
 
 // Impl Quirks
 /// create a new quirk struct from a specific profile
