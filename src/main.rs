@@ -1,3 +1,9 @@
+//! Created by Zachary Lebak and Giancarlo Ambrosino
+//! 
+//! --- ADD A DESCRIPTION OF THE FILE LATER
+//! 
+//! 
+
 use ferris8::Ferris8;
 
 // Main
@@ -13,8 +19,6 @@ fn main() {
     let mut ferris8 = Ferris8::new();
     ferris8.load_rom(&rom).expect("Could not load the ROM.");
 
-    // print a few opcodes to test
-    for _ in 0..20 {
-        println!("{:04X}", ferris8.fetch_instr());
-    }
+    // DEBUG: print that rom's bytes were loaded
+    println!("Loaded {} bytes", rom.len());
 }
