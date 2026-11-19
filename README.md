@@ -1,3 +1,7 @@
+# Ferris-boy: a CHIP-8 Emulator Built in Rust
+
+## Repo Structure
+```
 chip8/
 ├── Cargo.toml
 ├── README.md              # build steps, every CLI flag, config format, controls
@@ -29,3 +33,4 @@ chip8/
 └── tests/
     ├── opcodes.rs         # unit-style tests per instruction using FixedRng
     └── rom_tests.rs       # runs Timendus ROMs headlessly, checks the framebuffer
+```
