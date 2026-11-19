@@ -1,7 +1,7 @@
 //! Created by Giancarlo Ambrosino
 //!
-//! --- ADD A DESCRIPTION OF THE FILE LATER
-//!
+//! Headless module for frontend to perform tests 
+//! during development
 //!
 use super::Frontend;
 use crate::emulator::{HEIGHT, WIDTH};
