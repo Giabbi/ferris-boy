@@ -1,6 +1,6 @@
 //! Created by Giancarlo Ambrosino
 //!
-//! Headless module for frontend to perform tests 
+//! Headless module for frontend to perform tests
 //! during development
 //!
 use super::Frontend;
