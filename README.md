@@ -34,3 +34,6 @@ chip8/
     ├── opcodes.rs         # unit-style tests per instruction using FixedRng
     └── rom_tests.rs       # runs Timendus ROMs headlessly, checks the framebuffer
 ```
+
+## AI Usage Disclosure
+In the making of this project AI was strictly used for planning and splitting tasks between the two of us. All of the AI usage agrees with the Rust StuCo policies.
